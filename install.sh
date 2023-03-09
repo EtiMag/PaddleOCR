@@ -6,4 +6,4 @@ curl -sSL https://install.python-poetry.org | python3 -
 export PATH=$PATH:~/.local/share/pypoetry/venv/bin
 poetry --version
 poetry install
-# exemple: poetry run paddleocr --image_dir ticket-de-caisse-5.png --use_gpu false --lang en
+# exemple: poetry run paddleocr --image_dir test-files/ticket-de-caisse-5.png --use_gpu false --lang en
