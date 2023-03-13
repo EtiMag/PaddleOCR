@@ -9,7 +9,7 @@ Assumed environment is the docker image defined [here](https://github.com/InseeF
 2. Run setup file
     ```
     chmod +x install.sh
-    ./install.sh && source ~/.bashrc
+    ./install.sh && source ~/.bashrc && cd PaddleOCR
     ```
 
 3. Test PaddleOCR on an image
