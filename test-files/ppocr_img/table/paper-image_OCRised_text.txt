@@ -1,0 +1,92 @@
+(a) Main Page Annotation Example 1
+(b) Main Page Annotation Example 2
+(c) Index Page Annotation Example
+Page Frame
+Row
+Text Region
+Title Region
+Subtitl
+Other
+Figure 7: Annotation Examples in HJDataset. (a) and (b) show two examples for the labeling of main pages. The boxes
+are colored differently to reflect the layout element categories. Illustrated in (c), the items in each index page row are
+categorized as title blocks, and the annotations are denser.
+tion over union (10U) level [0.50:0.95]2, on the test data. In
+all the training data can be viewed as the benchmarks, while
+general, the high mAP values indicate accurate detection of
+training with few samples (five in this case) are consid-
+the layout elements. The Faster R-CNN and Mask R-CNN
+ered to mimic real-world scenarios. Given different train-
+achieve comparable results, better than RetinaNet. Notice-
+ing data, models pre-trained on HJDataset perform signifi-
+ably, the detections for small blocks like title are less pre-
+cantly better than those initialized with COCO weights. In-
+cise, and the accuracy drops sharply for the title category. In
+tuitively, models trained on more data perform better than
+Figure 8, (a) and (b) illustrate the accurate prediction results
+those with fewer samples. We also directly use the model
+of the Faster R-CNN model.
+trained on main to predict index pages without fine-
+tuning. The low zero-shot prediction accuracy indicates the
+5.2. Pre-training for other datasets
+dissimilarity between index and main pages. The large
+We also examine how our dataset can help with a real-
+increase in mAP from 0.344 to 0.471 after the model is
+world document digitization application. When digitizing
+new publications, researchers usually do not generate large
+Table 3: Detection mAP @ IOU [0.50:0.95] of different
+scale ground truth data to train their layout analysis models.
+models for each category on the test set. All values are given
+If they are able to adapt our dataset, or models trained on
+as percentages.
+our dataset, to develop models on their data, they can build
+their pipelines more efficiently and develop more accurate
+Category
+Faster R-CNN
+Mask R-CNNa
+RetinaNet
+models. To this end, we conduct two experiments. First we
+Page Frame
+99.046
+99.097
+99.038
+examine how layout analysis models trained on the main
+Row
+98.831
+98.482
+95.067
+pages can be used for understanding index pages. More
+Title Region
+87.571
+89.483
+69.593
+over, we study how the pre-trained models perform on other
+Text Region
+94.463
+86.798
+89.531
+historical Japanese documents.
+Title
+65.908
+71.517
+72.566
+Table 4 compares the performance of five Faster R-CNN
+Subtitle
+84.093
+84.174
+85.865
+models that are trained differently on index pages. If the
+Other
+44.023
+39.849
+14.371
+model loads pre-trained weights from HJDataset, it includes
+mAP
+81.991
+81.343
+75.223
+information learned from main pages. Models trained over
+ For training Mask R-CNN, the segmentation masks are the quadri-
+2This is a core metric developed for the COCO competition [12] for
+lateral regions for each block. Compared to the rectangular bounding
+evaluating the object detection quality.
+boxes, they delineate the text region more accurately.
